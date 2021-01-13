@@ -246,8 +246,20 @@ class PluginOrderOrder_Supplier extends CommonDBChild {
          echo "</table></div>";
 
          if ($candelete) {
-            Html::openArrowMassives("show_supplierinfos$rand", true);
-            Html::closeArrowMassives(['delete' => __("Delete permanently")]);
+            echo "<div class='center'>";
+            echo "<table width='900px' class='tab_glpi'>";
+            echo "<tr><td><img src=\"".$CFG_GLPI["root_doc"]."/pics/arrow-left.png\" alt=''></td>";
+            echo "<td class='center'><a onclick= \"if ( markCheckboxes('show_supplierinfos$rand') ) "
+              ."return false;\" href='#'>".__("Check all")."</a></td>";
+
+            echo "<td>/</td><td class='center'><a onclick= \"if ( unMarkCheckboxes('show_supplierinfos$rand') ) "
+              ."return false;\" href='#'>".__("Uncheck all")."</a>";
+            echo "</td><td align='left' width='80%'>";
+            echo "<input type='submit' name='delete' value=\"".__("Delete permanently")
+              ."\" class='submit' >";
+            echo "</td>";
+            echo "</table>";
+            echo "</div>";
          }
 
       }
